@@ -29,8 +29,9 @@ public class Chair extends Furniture{
     Seat sitting;
     Manufacturer producer;
     public boolean isBroken;
+    private double price;
 
-    public Chair(float frame_l, ChairLegs number, float frame_h, float frame_w, float seat_h, float seat_w, String Name, Manufacturer obj){
+    public Chair(double price, float frame_l, ChairLegs number, float frame_h, float frame_w, float seat_h, float seat_w, String Name, Manufacturer obj){
         super();
         back = new Backboard(50, 60);
         num = number;
@@ -38,6 +39,11 @@ public class Chair extends Furniture{
         sitting = new Seat(seat_h, seat_w);
         name = Name;
         producer = obj;
+        this.price = price;
+    }
+
+    public ChairLegs getLegs() {
+        return num;
     }
 
     public Chair(String Name) {
@@ -47,6 +53,7 @@ public class Chair extends Furniture{
         frame = new ChairFrame();
         sitting = new Seat();
         producer = new Manufacturer(Name, this);
+        price = 10d;
     }
 
     public Chair() {
@@ -56,8 +63,12 @@ public class Chair extends Furniture{
         frame = new ChairFrame();
         sitting = new Seat();
         producer = new Manufacturer(this.name + "`s Manufacturer", this);
+        price = 10d;
     }
 
+    public double getPrice() {
+        return price;
+    }
     public void isBroken() {
         isBroken = true;
     }
